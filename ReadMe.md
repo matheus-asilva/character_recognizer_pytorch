@@ -4,14 +4,14 @@
 ## Before we begin, we must make sure to setup!
 1. We first clone this repo
 ```bash
-$ git clone https://github.com/mnist_recognizer_pytorch
-$ cd mnist_recognizer_pytorch
+$ git clone https://github.com/character_recognizer_pytorch
+$ cd character_recognizer_pytorch
 ```
 
 2. Create a new environment with conda and install requirements
 ```bash
-$ conda create --name mnist_recognizer_pytorch python=3.7
-$ conda activate mnist_recognizer_pytorch
+$ conda create --name character_recognizer_pytorch python=3.7
+$ conda activate character_recognizer_pytorch
 $ pip install -r requirements.txt
 ```
 
