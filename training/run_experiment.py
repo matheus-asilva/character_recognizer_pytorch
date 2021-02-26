@@ -1,6 +1,7 @@
 import argparse
 import importlib
 
+import time, datetime
 import numpy as np
 import torch
 import pytorch_lightning as pl
@@ -59,16 +60,17 @@ def main():
     ```
     """
 
+    start = datetime.datetime.now()
     parser = _setup_parser()
     args = parser.parse_args()
     data_class = _import_class(f"model_core.data.{args.data_class}")
     model_class = _import_class(f"model_core.models.{args.model_class}")
     data = data_class(args)
     model = model_class(data_config=data.config(), args=args)
-    
+
     if args.loss not in ("ctc", "transformer"):
         lit_model = lit_models.BaseLitModel(model, args=args)
-    
+
     loggers = [pl.loggers.TensorBoardLogger("training/logs")]
     callbacks = [pl.callbacks.EarlyStopping(monitor="val_loss", mode="min", patience=10)]
 
@@ -80,5 +82,20 @@ def main():
     trainer.fit(lit_model, datamodule=data)
     trainer.test(lit_model, datamodule=data)
 
+    end = datetime.datetime.now()
+    diff = (end - start)
+    diff_seconds = int(diff.total_seconds())
+    minute_seconds, seconds = divmod(diff_seconds, 60)
+    hours, minutes = divmod(minute_seconds, 60)
+    hms = f"Execution time: {hours}h {minutes}m {seconds}s"
+    print(hms)
+
+
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
