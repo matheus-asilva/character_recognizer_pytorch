@@ -10,7 +10,7 @@ $ cd character_recognizer_pytorch
 
 2. Create a new environment with conda and install requirements
 ```bash
-$ conda create --name character_recognizer_pytorch python=3.7
+$ conda create --name character_recognizer_pytorch python=3.8
 $ conda activate character_recognizer_pytorch
 $ pip install -r requirements.txt
 ```
