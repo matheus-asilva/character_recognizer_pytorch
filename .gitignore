@@ -156,4 +156,7 @@ Pipfile.lock
 data/downloaded
 data/processed
 
+# .save files
+*.save
+
 # End of https://www.toptal.com/developers/gitignore/api/python
